@@ -1,0 +1,4 @@
+DA_name,gender,NationalITy,PlaceofBirth,StageID,GradeID,SectionID,Topic,Semester,Relation,raisedhands,VisITedResources,AnnouncementsView,Discussion,ParentAnsweringSurvey,ParentschoolSatisfaction,StudentAbsenceDays,Class
+DA_type,Nominal,Nominal,Nominal,Ordinal,Ordinal,Nominal,Nominal,Nominal,Nominal,Numeric,Numeric,Numeric,Numeric,Nominal,Nominal,Ordinal,Ordinal
+unique_value,3,14,14,3,10,3,12,2,2,82,89,88,90,2,2,2,3
+user_imp,50,50,10,50,10,10,10,10,10,100,100,100,100,10,10,100,100

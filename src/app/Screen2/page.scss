@@ -1,0 +1,64 @@
+.table-scroll {
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #8c79f9;
+        // border-radius: 0px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba($color: #fff, $alpha: 0.4);
+        opacity: 0.1;
+        // border-radius: 0px;
+        box-shadow: inset 0px 0px 0px 0px #fff;
+    }
+}
+
+.tooltip {
+    &::before {
+        // width: max-content;
+        // top: 0;
+        position: absolute;
+        z-index: 9999;
+    }
+
+    &::after {
+        // width: max-content;
+        // top: 0;
+        position: absolute;
+        z-index: 9999;
+    }
+}
+
+.dbogentype {
+    text-transform: none !important;
+}
+
+/* Your existing styles for the dropdown button */
+
+/* Style the label when it's in focus */
+label:focus-within+ul.dropdown-content {
+    /* Your existing styles for the dropdown menu */
+
+    /* Adjust the position as needed */
+    position: absolute;
+    z-index: 100 !important;
+    top: 100%;
+    /* Position it below the label */
+    left: 0;
+    transform: translateY(0);
+    /* Reset any transform that might be applied */
+    opacity: 1;
+    /* Show the dropdown */
+    visibility: visible;
+    /* Show the dropdown */
+    overflow-y: auto;
+}
+.metadatatip{
+    &::before{
+        max-width: max-content;
+    }
+}
