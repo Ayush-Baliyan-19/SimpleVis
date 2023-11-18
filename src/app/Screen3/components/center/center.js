@@ -585,13 +585,13 @@ const Screen = ({
     })
 
     const vlSpec_2 = []
-    for (let i = 1; i < rows.length; i++) {
-      for (let j = 0; j < visualizations.length; j++) {
+    for (let i = 1; i < rows?.length; i++) {
+      for (let j = 0; j < visualizations?.length; j++) {
         if (visualizations[j].vis_name === rows[i][1]) {
           let tempGraph = JSON.parse(JSON.stringify(visualizations[j]))
           const vl_encode = Object.keys(tempGraph.encoding)
-          for (let k = 2; k < rows[i].length; k++) {
-            for (let l = 0; l < vl_encode.length; l++) {
+          for (let k = 2; k < rows[i]?.length; k++) {
+            for (let l = 0; l < vl_encode?.length; l++) {
               if (vl_encode[l] === rows[i][k]) {
                 const fieldd = rows[0][k]
                 tempGraph.encoding[vl_encode[l]] = {
@@ -765,7 +765,7 @@ const Screen = ({
   })
 
   const getData3 = () => {
-    for (let i = 0; i < metadata[0].length; i++) {
+    for (let i = 0; i < metadata[0]?.length; i++) {
       if (data2.includes(metadata[0][i])) {
         if (metadata[3][i] == 0) {
           setDa_NumberData(prev => ({
@@ -809,7 +809,7 @@ const Screen = ({
 
   React.useEffect(() => {
     setVisualization([])
-    if (best_DBos.length > 0) {
+    if (best_DBos?.length > 0) {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       console.log("Use effect called");
       data2 = []
@@ -953,11 +953,11 @@ const Screen = ({
     //   console.log("worst_candidate ", worst_candidate);
 
     let best_candidates = [
-      sorted_fitness[sorted_fitness.length - 1],
-      sorted_fitness[sorted_fitness.length - 2],
-      sorted_fitness[sorted_fitness.length - 3],
-      sorted_fitness[sorted_fitness.length - 4],
-      sorted_fitness[sorted_fitness.length - 5]
+      sorted_fitness[sorted_fitness?.length - 1],
+      sorted_fitness[sorted_fitness?.length - 2],
+      sorted_fitness[sorted_fitness?.length - 3],
+      sorted_fitness[sorted_fitness?.length - 4],
+      sorted_fitness[sorted_fitness?.length - 5]
     ]
     //   console.log("Best candidates are",best_candidates);
     let otherDBOs = []
@@ -992,11 +992,11 @@ const Screen = ({
       <ToastContainer />
       <InputModal db={db} />
       {/* {
-        final_DBo_all.length > 0 && final_eval_all.length > 0 && (
+        final_DBo_all?.length > 0 && final_eval_all?.length > 0 && (
           <Sort />
         )
       } */}
-      {info.length > 0 && <Modal1 data={info} data2={Da_NumberData} />}
+      {info?.length > 0 && <Modal1 data={info} data2={Da_NumberData} />}
       {!isBottomVisible && (
         <button
           className="btn fixed z-10 bottom-5 right-5 btn-secondary"
@@ -1099,7 +1099,7 @@ const Screen = ({
                 onClick={e => {
                   e.preventDefault()
                   const currentIndex = layoutTypes.indexOf(layoutType)
-                  const nextIndex = (currentIndex + 1) % layoutTypes.length
+                  const nextIndex = (currentIndex + 1) % layoutTypes?.length
                   setLayoutType(layoutTypes[nextIndex])
                 }}
               />
@@ -1119,7 +1119,7 @@ const Screen = ({
                 onClick={e => {
                   e.preventDefault()
                   const currentIndex = complexityTypes.indexOf(complexityType)
-                  const nextIndex = (currentIndex + 1) % complexityTypes.length
+                  const nextIndex = (currentIndex + 1) % complexityTypes?.length
                   setComplexityType(complexityTypes[nextIndex])
                 }}
               />
@@ -1277,7 +1277,7 @@ const EachDBOComponent = ({
   }
 
   // useEffect(() => {
-  //   if (personalisedDBO.length > 0) {
+  //   if (personalisedDBO?.length > 0) {
   //     const isElementSaved = personalisedDBO.forEach(subArray =>
   //       // subArray.elem.some(
   //       //   (item: any) => JSON.stringify(item) === JSON.stringify(element)
@@ -1289,17 +1289,17 @@ const EachDBOComponent = ({
   // }, [personalisedDBO, element])
 
   const addPersonalisedDBO = (element, vis, unLockedPersonalisedDBo) => {
-    if (personalisedDBO.length === 0) {
+    if (personalisedDBO?.length === 0) {
       setPersonalisedDBO([{ elem: [element], vis: [vis] }])
       setUnLockedPersonalisedDBo(0)
     }
     else {
       if (
         lockedDBOs.includes(unLockedPersonalisedDBo) &&
-        lockedDBOs.length !== 1 &&
-        unLockedPersonalisedDBo !== lockedDBOs.length - 1
+        lockedDBOs?.length !== 1 &&
+        unLockedPersonalisedDBo !== lockedDBOs?.length - 1
       ) {
-        if (personalisedDBO.length != 5) {
+        if (personalisedDBO?.length != 5) {
           setPersonalisedDBO(prevArrays => [
             ...prevArrays,
             { elem: [element], vis: [vis] }
@@ -1311,7 +1311,7 @@ const EachDBOComponent = ({
         }
       } else {
         const unLockedDBo = personalisedDBO[unLockedPersonalisedDBo]
-        if (unLockedDBo.elem.length < 9) {
+        if (unLockedDBo.elem?.length < 9) {
           setPersonalisedDBO(prevArrays => {
             const newArrays = [...prevArrays]
             const unlockedElement = newArrays[unLockedPersonalisedDBo]
@@ -1323,7 +1323,7 @@ const EachDBOComponent = ({
             // return newArrays;
           })
         } else {
-          if (!personalisedDBO.length == 5) {
+          if (!personalisedDBO?.length == 5) {
             setPersonalisedDBO(prevArrays => [
               ...prevArrays,
               { elem: [element], vis: [vis] }
@@ -1345,7 +1345,7 @@ const EachDBOComponent = ({
         const filteredArray = subArray.elem.filter(
           item => item.elem !== element
         )
-        if (filteredArray.length !== subArray.length) {
+        if (filteredArray?.length !== subArray?.length) {
           idx = i
         }
         return filteredArray
@@ -1661,7 +1661,7 @@ const DB_Rating = ({ dbo, DBO_Ratings, setDBO_Ratings }) => {
 
     const setRating = index => {
       stars.forEach(star => star.classList.remove("selected"))
-      if (index > 0 && index <= stars.length) {
+      if (index > 0 && index <= stars?.length) {
         const selectedStar = document.querySelector(`[data-rate="${index}"]`)
         if (selectedStar) {
           selectedStar.classList.add("selected")

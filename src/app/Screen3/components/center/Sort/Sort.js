@@ -25,11 +25,11 @@ const Sort = () => {
     //   console.log("worst_candidate ", worst_candidate);
 
     let best_candidates = [
-      sorted_fitness[sorted_fitness.length - 1],
-      sorted_fitness[sorted_fitness.length - 2],
-      sorted_fitness[sorted_fitness.length - 3],
-      sorted_fitness[sorted_fitness.length - 4],
-      sorted_fitness[sorted_fitness.length - 5]
+      sorted_fitness[sorted_fitness?.length - 1],
+      sorted_fitness[sorted_fitness?.length - 2],
+      sorted_fitness[sorted_fitness?.length - 3],
+      sorted_fitness[sorted_fitness?.length - 4],
+      sorted_fitness[sorted_fitness?.length - 5]
     ]
     //   console.log("Best candidates are",best_candidates);
     let otherDBOs = []
@@ -58,7 +58,7 @@ const Sort = () => {
     }, 1000)
   }
   React.useEffect(() => {
-    if (final_DBo_all.length > 0 && final_eval_all.length > 0) {
+    if (final_DBo_all?.length > 0 && final_eval_all?.length > 0) {
       get_Best_DBos()
       // console.log(final_DBo_all);
     }

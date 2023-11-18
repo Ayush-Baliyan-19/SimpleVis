@@ -78,8 +78,8 @@ const Page = () => {
       body: JSON.stringify({
         DBo_POP: DBo_POP,
         DBo_POP_EVAL: dbo_evaluation,
-        metadata:metadata,
-        selectedVis:selectedVis
+        metadata: metadata,
+        selectedVis: selectedVis
       }),
       headers: {
         "Content-Type": "application/json",
@@ -109,7 +109,7 @@ const Page = () => {
         min: range.min,
         max: range.max,
         selectedVis: selectedVis,
-        metadata:metadata
+        metadata: metadata
       }
       ),
       headers: {
@@ -156,10 +156,13 @@ const Page = () => {
           </div>
           <div className="flex flex-col gap-5">
             <div className="flex items-center">
-
-              <p className=" font-semibold text-2xl flex w-max justify-center items-center gap-2 tooltip tooltip-right" data-tip="The preprocessed data uploaded by user">User Data
-                <AiOutlineInfoCircle className="self-center" />
-                : </p><span className="font-regular">&nbsp; {fileData.length} Rows, {fileData[0].length} Columns</span>
+              { fileData?.length && fileData[0]?.length &&
+                <>
+                  <p className=" font-semibold text-2xl flex w-max justify-center items-center gap-2 tooltip tooltip-right" data-tip="The preprocessed data uploaded by user">User Data
+                    <AiOutlineInfoCircle className="self-center" />
+                    : </p><span className="font-regular">&nbsp; {fileData?.length} Rows, {fileData[0]?.length} Columns</span>
+                </>
+              }
             </div>
             <UserData />
           </div>
@@ -329,16 +332,10 @@ const Page = () => {
         </div>
       </div>
       {
-        final_DBo_all.length > 0 && final_eval_all.length > 0 && (
+        final_DBo_all?.length > 0 && final_eval_all?.length > 0 && (
           <Sort />
         )
       }
-      {/* <RG_Eval
-        {...{ DBo_POP, setDBo_POP, dbo_evaluation, setdbo_evaluation }}
-      />
-      {DBo_POP.length > 0 && dbo_evaluation.length > 0 && (
-        <Analysis_GA {...{ DBo_POP, dbo_evaluation }} />
-      )} */}
     </>
   );
 };

@@ -40,7 +40,7 @@ export default function Page() {
 
   React.useEffect(() => {
     var arr = []
-    for (let i = 0; i < personalisedDBO.length; i++) {
+    for (let i = 0; i < personalisedDBO?.length; i++) {
       arr.push(i)
     }
     setLockedDBOs(arr)

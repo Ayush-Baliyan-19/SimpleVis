@@ -44,7 +44,7 @@ const _items = [
   },
 ];
 
-const length = _items.length;
+const length = _items?.length;
 _items.push(..._items);
 
 const sleep = (ms = 0) => {
@@ -107,13 +107,13 @@ const CarouselSlideItem = ({
   );
 };
 
-const keys = Array.from(Array(_items.length).keys());
+const keys = Array.from(Array(_items?.length).keys());
 
 const Carousel = () => {
   const [items, setItems] = React.useState(keys);
   const [isTicking, setIsTicking] = React.useState(false);
   const [activeIdx, setActiveIdx] = React.useState(0);
-  const bigLength = items.length;
+  const bigLength = items?.length;
 
   const prevClick = (jump = 1) => {
     if (!isTicking) {

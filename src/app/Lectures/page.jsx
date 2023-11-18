@@ -1,6 +1,6 @@
 import React from "react";
-import {FaFileDownload, FaPaperPlane} from "react-icons/fa";
-import {GiArchiveResearch} from "react-icons/gi";
+import { FaFileDownload, FaPaperPlane } from "react-icons/fa";
+import { GiArchiveResearch } from "react-icons/gi";
 
 const Page = () => {
   const cardDetails = [
@@ -31,14 +31,14 @@ const Page = () => {
       <h1 className="text-3xl text-center font-bold mb-10 mt-5">Lectures and Presentations</h1>
       <div className=" flex justify-center items-center flex-grow flex-1 gap-5 w-screen flex-wrap">
         {cardDetails.map((cardDetail, index) => (
-          <TutorialCard {...{ cardDetails:cardDetail }} key={index} />
+          <TutorialCard {...{ cardDetails: cardDetail }} key={index} />
         ))}
       </div>
     </div>
   );
 };
 
-const TutorialCard = ({ cardDetails }: any) => {
+const TutorialCard = ({ cardDetails }) => {
   return (
     <div className="card border-2 shadow-xl shadow-slate-500 py-3 hover:shadow-slate-700 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105
     ">
@@ -53,14 +53,14 @@ const TutorialCard = ({ cardDetails }: any) => {
           ></iframe>
         </figure>
         <div className="flex justify-center items-center gap-4">
-            <a href="" className="flex justify-center items-center flex-col gap-2">
-                <button className="btn btn-secondary rounded-full"><FaFileDownload className=" w-4 h-4 aspect-square"/> </button>
-                <p className=" text-sm font-medium">Download File</p>
-            </a>
-            <a href="" className="flex justify-center items-center flex-col gap-2">
-                <button className="btn btn-secondary rounded-full"><FaPaperPlane className=" w-4 h-4 aspect-square"/> </button>
-                <p className=" text-sm font-medium">Research Paper</p>
-            </a>
+          <a href="" className="flex justify-center items-center flex-col gap-2">
+            <button className="btn btn-secondary rounded-full"><FaFileDownload className=" w-4 h-4 aspect-square" /> </button>
+            <p className=" text-sm font-medium">Download File</p>
+          </a>
+          <a href="" className="flex justify-center items-center flex-col gap-2">
+            <button className="btn btn-secondary rounded-full"><FaPaperPlane className=" w-4 h-4 aspect-square" /> </button>
+            <p className=" text-sm font-medium">Research Paper</p>
+          </a>
         </div>
       </div>
     </div>

@@ -50,9 +50,9 @@ const LeftComponent = ({ clicked, dbo, setClicked }) => {
     // Extract the headers
     const parsedData = []
 
-    for (let i = 0; i < metadata.length; i++) {
+    for (let i = 0; i < metadata?.length; i++) {
       const line = metadata[i]
-      for (let j = 0; j < line.length; j++) {
+      for (let j = 0; j < line?.length; j++) {
         if (line[0] === "DA_name") {
           let newObject = {
             DA_name: line[j],
@@ -71,7 +71,7 @@ const LeftComponent = ({ clicked, dbo, setClicked }) => {
         }
       }
     }
-    return parsedData.slice(1, parsedData.length - 1)
+    return parsedData.slice(1, parsedData?.length - 1)
   }
   // Handle option change
 
@@ -136,7 +136,7 @@ const LeftComponent = ({ clicked, dbo, setClicked }) => {
             setIsAllOpen(prev => !prev)
             setClicked([])
             setTimeout(() => {
-              setClicked(metadata[0].slice(1, metadata[0].length - 1))
+              setClicked(metadata[0].slice(1, metadata[0]?.length - 1))
             }, 100)
           }}>
             <BsTriangleFill className={`text-white ${isAllOpen ? "rotate-180" : "rotate-90"}`} />
@@ -155,9 +155,9 @@ const LeftComponent = ({ clicked, dbo, setClicked }) => {
           </h1>
         </div>
         <div className="w-max main-left flex flex-col items-start gap-1 px-2 h-[40vh] overflow-y-auto scroll-smooth">
-          {metadata[0].length > 0 && (
+          {metadata[0]?.length > 0 && (
             <>
-              {metadata[0].slice(1,metadata[0].length).map((data, index) => {
+              {metadata[0].slice(1,metadata[0]?.length).map((data, index) => {
                 return (
                   <EachDA
                     item={data}

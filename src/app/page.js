@@ -107,14 +107,14 @@ export default function Home() {
     const DA_type = DAT[1];
 
     const fileData = fileContent.split("\n");
-    const attr_no = fileData[0].split(",").length;
-    const row_no = fileData.length;
+    const attr_no = fileData[0].split(",")?.length;
+    const row_no = fileData?.length;
     const user_imp = ["user_imp"];
     const unique_value = ["unique_value"];
     const DA_name = ["DA_name"];
 
     function get_random(list) {
-      return list[Math.floor(Math.random() * list.length)];
+      return list[Math.floor(Math.random() * list?.length)];
     }
 
     for (let n = 0; n < attr_no; n++) {
@@ -137,7 +137,7 @@ export default function Home() {
       const unique = column_data.filter(
         (item, i, ar) => ar.indexOf(item) === i
       );
-      unique_value.push(unique.length.toString());
+      unique_value.push(unique?.length.toString());
     }
 
     const fileData2 = [
@@ -165,14 +165,14 @@ export default function Home() {
     const DA_type = DAT[1];
 
     const fileData = fileContent.split("\n");
-    const attr_no = fileData[0].split(",").length;
-    const row_no = fileData.length;
+    const attr_no = fileData[0].split(",")?.length;
+    const row_no = fileData?.length;
     const user_imp = ["user_imp"];
     const unique_value = ["unique_value"];
     const DA_name = ["DA_name"];
 
     function get_random(list) {
-      return list[Math.floor(Math.random() * list.length)];
+      return list[Math.floor(Math.random() * list?.length)];
     }
 
     for (let n = 0; n < attr_no; n++) {
@@ -195,7 +195,7 @@ export default function Home() {
       const unique = column_data.filter(
         (item, i, ar) => ar.indexOf(item) === i
       );
-      unique_value.push(unique.length.toString());
+      unique_value.push(unique?.length.toString());
     }
 
     const fileData2 = [
@@ -214,7 +214,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (metadata != null && metadata.length > 0) {
+    if (metadata != null && metadata?.length > 0) {
       router.push("/Screen2");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

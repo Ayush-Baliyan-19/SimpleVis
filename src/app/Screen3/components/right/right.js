@@ -485,13 +485,13 @@ const Right = ({
     // console.log(best_DBos[fileNumber]);
 
     const vlSpec_2 = []
-    for (let i = 0; i < rows.length; i++) {
-      for (let j = 0; j < visualizations.length; j++) {
+    for (let i = 0; i < rows?.length; i++) {
+      for (let j = 0; j < visualizations?.length; j++) {
         if (visualizations[j].vis_name === rows[i][1]) {
           let tempGraph = { ...visualizations[j] }
           const vl_encode = Object.keys(tempGraph.encoding)
-          for (let k = 2; k < rows[i].length; k++) {
-            for (let l = 0; l < vl_encode.length; l++) {
+          for (let k = 2; k < rows[i]?.length; k++) {
+            for (let l = 0; l < vl_encode?.length; l++) {
               if (vl_encode[l] === rows[i][k]) {
                 tempGraph.encoding[vl_encode[l]] = {
                   ...tempGraph.encoding[vl_encode[l]],
@@ -532,7 +532,7 @@ const Right = ({
   React.useEffect(() => {
     const filteredDBs = dbArray.filter(item => item !== db)
     setSvgs([])
-    if (best_DBos && best_DBos.length > 0)
+    if (best_DBos && best_DBos?.length > 0)
       setTimeout(() => {
         getSVGs(filteredDBs[0]).then(() => {
           getSVGs(filteredDBs[1]).then(() => {
@@ -588,7 +588,7 @@ const Right = ({
   const [evalutationData, setEvalutationData] = useState([])
 
   useEffect(() => {
-    if (evalutationData.length > 0) {
+    if (evalutationData?.length > 0) {
       const modal = document.getElementById("my_modal_8")
       if (modal) {
         modal.showModal()
@@ -905,14 +905,14 @@ const EachDBOComponentPersonal = ({
     let complexity = 0
 
     //let match_sum = 0;
-    for (let i = 0; i < CO_DBo.length; i++) {
+    for (let i = 0; i < CO_DBo?.length; i++) {
       let match_DA_list = Array.from(CO_DBo).fill("")
       const row = CO_DBo[i]
       // for complexity calculation
       const result = vis_table.find(e => e[0] === row[1])
       if (result) complexity += Number(result[3])
       // count no of DA covered with out repetation
-      for (var j = 2; j < row.length; j++) {
+      for (var j = 2; j < row?.length; j++) {
         if (row[j]) {
           coverage_DA_count[j] = 1
           // repeated DA coverage gets overwritten
@@ -920,10 +920,10 @@ const EachDBOComponentPersonal = ({
       }
 
       // for match score calculation
-      for (let j = 2; j < row.length; j++) {
+      for (let j = 2; j < row?.length; j++) {
         let DA_count = 0
         if (row[j]) {
-          for (var k = 1; k < vis_table_imp.length; k++) {
+          for (var k = 1; k < vis_table_imp?.length; k++) {
             // consider the DA secquance in meta_data and vis_table_imp is same (vis_table_imp is just 1 column ahead)
             if (
               CO_DBo[i][1] == vis_table_imp[k][0] &&
@@ -940,7 +940,7 @@ const EachDBOComponentPersonal = ({
     // Match Score sum calculation
     let match_VA_imp_sum = 0
     let match_count = 0
-    for (var i = 0; i < match_DA_list_final.length; i++) {
+    for (var i = 0; i < match_DA_list_final?.length; i++) {
       const row = CO_DBo[i]
       // for complexity calculation
       for (var j = 0; j < len_DA; j++) {
@@ -955,12 +955,12 @@ const EachDBOComponentPersonal = ({
     let match_score_nomalized = match_VA_imp_sum / (match_count * 100)
 
     // coverage_imp sum calculation
-    // coverage_DA_count_sum = coverage_DA_count.length?((coverage_DA_count.reduce((p,e)=>p=p+e))):0;
-    let coverage_DA_count_sum = meta_data[3].slice(1).length
+    // coverage_DA_count_sum = coverage_DA_count?.length?((coverage_DA_count.reduce((p,e)=>p=p+e))):0;
+    let coverage_DA_count_sum = meta_data[3].slice(1)?.length
       ? meta_data[3].slice(1).reduce((p, e) => (p = Number(p) + Number(e)))
       : 0
 
-    for (let i = 2; i < coverage_DA_count.length; i++) {
+    for (let i = 2; i < coverage_DA_count?.length; i++) {
       if (coverage_DA_count[i]) {
         coverage_imp += Number(meta_data[3][i - 1])
       }
@@ -972,45 +972,45 @@ const EachDBOComponentPersonal = ({
       coverage_DA_count_sum
     )
     console.log("match_VA_imp_sum,match_count", match_VA_imp_sum, match_count)
-    console.log("complexity,CO_DBo.length", complexity, CO_DBo.length)
+    console.log("complexity,CO_DBo?.length", complexity, CO_DBo?.length)
 
     // Fx = (( match_score_nomalized) + (coverage_imp/(coverage_DA_count_sum))
-    //     -(complexity/(CO_DBo.length*100)))
+    //     -(complexity/(CO_DBo?.length*100)))
 
     // Fx = ((2*match_score_nomalized) + (2*(coverage_imp/(coverage_DA_count_sum))) -
-    //        (complexity/(CO_DBo.length*100)))
+    //        (complexity/(CO_DBo?.length*100)))
 
     // Fx = ((4*match_score_nomalized) + (4*(coverage_imp/(coverage_DA_count_sum))) -
-    //        (1*(complexity/(CO_DBo.length*100))))
+    //        (1*(complexity/(CO_DBo?.length*100))))
 
     // Fx = ((match_score_nomalized + (coverage_imp/(coverage_DA_count_sum))) +
-    //         (1-(complexity/(CO_DBo.length*100)))) / 3
+    //         (1-(complexity/(CO_DBo?.length*100)))) / 3
 
     let Fx =
       match_score_nomalized * (coverage_imp / coverage_DA_count_sum) -
-      complexity / (CO_DBo.length * 100)
+      complexity / (CO_DBo?.length * 100)
 
     // Fx = ((match_score_nomalized) * (coverage_imp/(coverage_DA_count_sum))) *
-    //         (1-(complexity/(CO_DBo.length*100)))
+    //         (1-(complexity/(CO_DBo?.length*100)))
 
     // Fx = (0.5*(match_score_nomalized)) * (0.3*(coverage_imp/(coverage_DA_count_sum))) *
-    //         (0.2*(1-(complexity/(CO_DBo.length*100))))
+    //         (0.2*(1-(complexity/(CO_DBo?.length*100))))
 
     // Fx = (((match_score_nomalized) * (coverage_imp/(coverage_DA_count_sum))) -
-    //         (0.1*(complexity/(CO_DBo.length*100))))
+    //         (0.1*(complexity/(CO_DBo?.length*100))))
 
     // push to array for output
     CO_DBo_evaluation.push([
       no,
       Number(match_score_nomalized).toFixed(3),
       Number(coverage_imp / coverage_DA_count_sum).toFixed(3),
-      Number(complexity / (CO_DBo.length * 100)).toFixed(3),
+      Number(complexity / (CO_DBo?.length * 100)).toFixed(3),
       Fx.toFixed(3)
     ])
 
     return CO_DBo_evaluation
   }
-  //console.log("coverage_DA_count,coverage_imp,coverage_DA_count_sum, match_VA_imp_sum,match_count,complexity,CO_DBo.length", coverage_DA_count_sum, match_VA_imp_sum, match_count,complexity,CO_DBo.length)
+  //console.log("coverage_DA_count,coverage_imp,coverage_DA_count_sum, match_VA_imp_sum,match_count,complexity,CO_DBo?.length", coverage_DA_count_sum, match_VA_imp_sum, match_count,complexity,CO_DBo?.length)
 
   //==================== End of CO_DBo fitness Evaluation=========================
   var vis_table
@@ -1057,7 +1057,7 @@ const EachDBOComponentPersonal = ({
     let eval_res = DBo_evaluation_fxn(
       DBo_vis.slice(1),
       1,
-      metadata[0].slice(1).length,
+      metadata[0].slice(1)?.length,
       vis_table,
       vis_table_imp,
       metadata
